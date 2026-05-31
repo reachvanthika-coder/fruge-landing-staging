@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@theme {
+  /* Core */
+  --color-dark: #1a120a;
+  --color-cream: #fdf6ec;
+  --color-forest: #1c2b1a;
+  --color-terracotta: #c4622d;
+  --color-goa-sand: #e8d5b0;
+  --color-red-drip: #d62b2b;
+  --color-warm-grey: #e8e4dc;
+  --color-text-muted: #6b6b6b;
+  --color-charcoal: #1a1a1a;
+
+  /* Produce palette */
+  --color-crush-amber: #e8820c;
+  --color-syrup-emerald: #2d7a4f;
+  --color-glaze-caramel: #8b5e2a;
+  --color-fondant-blush: #f2c4ce;
+  --color-jam-plum: #6b2d5e;
+  --color-choc-espresso: #2c1810;
+  --color-filling-cherry: #9b2335;
+  --color-innovation-glow: #3d2914;
+
+  /* Legacy aliases for components */
+  --color-brand-red: #d62b2b;
+  --color-brand-red-dark: #b8181d;
+  --color-brand-red-light: #e8354f;
+  --color-brand-red-muted: #fef2f2;
+  --color-warm-white: #fdf6ec;
+  --color-cashew-cream: #fdf6ec;
+  --color-charcoal-deep: #1a120a;
+  --color-leaf: #2d7a4f;
+  --color-earth: #5c4a3d;
+
+  --font-display: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-body: var(--font-inter), "Inter", system-ui, sans-serif;
+  --font-soul: var(--font-sacramento), "Sacramento", cursive;
+
+  --radius-card: 16px;
+  --radius-button: 8px;
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --shadow-product: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-dark font-body text-charcoal antialiased;
+  }
+
+  ::selection {
+    background-color: color-mix(in srgb, var(--color-red-drip) 15%, transparent);
+    color: var(--color-dark);
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-leaf;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .grain-overlay {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  }
+
+  .font-soul {
+    font-family: var(--font-soul);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Prevent sub-pixel gaps between sections and wave dividers */
+.section-wave-divider {
+  font-size: 0;
+  transform: translateZ(0);
+}
+
+.section-wave-divider svg {
+  display: block;
+  vertical-align: top;
+}
