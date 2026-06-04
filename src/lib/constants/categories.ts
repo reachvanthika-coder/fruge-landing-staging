@@ -11,6 +11,10 @@ export type CategoryCard = {
   borderClass: string;
 };
 
+export function getCategoryBySlug(slug: string): CategoryCard | undefined {
+  return categoryCards.find((c) => c.id === slug);
+}
+
 export const categoryCards: CategoryCard[] = [
   {
     id: "glaze-gel",
@@ -94,6 +98,6 @@ export function getCategoryFocusRailItems() {
     description: `"${card.tagline}"`,
     meta: card.sizes,
     imageSrc: card.imageSrc,
-    href: "#enquiry" as const,
+    href: `/products/${card.id}` as const,
   }));
 }

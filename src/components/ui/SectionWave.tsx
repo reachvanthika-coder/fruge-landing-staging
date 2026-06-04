@@ -41,28 +41,35 @@ const WAVE_PATHS = [
   "M0,56 C160,104 320,8 480,64 C640,120 880,24 1080,80 C1200,104 1320,48 1440,64 L1440,120 L0,120 Z",
 ] as const;
 
-type SectionWaveProps = SectionTransition & {
+type SectionWaveProps = {
+  variant?: 0 | 1 | 2;
+  drips?: boolean;
   className?: string;
-};
+} & (
+  | (SectionTransition & { fromColor?: never; toColor?: never })
+  | { fromColor: string; toColor: string; from?: never; to?: never }
+);
 
 /**
  * Seamless section divider: top half matches outgoing section (`from`),
  * wave curve fills with incoming section colour (`to`).
  * Overlaps adjacent sections by 1px to prevent body-background bleed.
+ * Pass `fromColor` / `toColor` for category or flavor-specific hex transitions.
  */
-export function SectionWave({
-  from,
-  to,
-  variant = 0,
-  drips = true,
-  className,
-}: SectionWaveProps) {
-  const fromColor = WAVE_FILLS[from];
-  const toColor = WAVE_FILLS[to];
+export function SectionWave(props: SectionWaveProps) {
+  const { variant = 0, drips = true, className } = props;
+
+  const fromColor =
+    "fromColor" in props && props.fromColor
+      ? props.fromColor
+      : WAVE_FILLS[props.from!];
+  const toColor =
+    "toColor" in props && props.toColor
+      ? props.toColor
+      : WAVE_FILLS[props.to!];
   const path = WAVE_PATHS[variant];
 
-  // Same-colour transition — render nothing
-  if (from === to) return null;
+  if (fromColor.toLowerCase() === toColor.toLowerCase()) return null;
 
   return (
     <div

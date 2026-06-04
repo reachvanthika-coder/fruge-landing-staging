@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" fill="none" role="img" aria-label="Product photo pending">
+  <rect width="800" height="600" fill="#FDF6EC"/>
+  <rect x="40" y="40" width="720" height="520" rx="16" stroke="#8B5E2A" stroke-width="2" stroke-dasharray="12 8" fill="#F5E6D3"/>
+  <path d="M320 220h160v120H320z" stroke="#8B5E2A" stroke-width="2" fill="#EBD5BD"/>
+  <circle cx="350" cy="250" r="18" fill="#8B5E2A" opacity="0.35"/>
+  <path d="M330 310l50-40 40 30 60-50 70 80H330z" fill="#8B5E2A" opacity="0.25"/>
+  <text x="400" y="400" text-anchor="middle" font-family="system-ui, sans-serif" font-size="28" font-weight="600" fill="#1A120A">Product photo pending</text>
+  <text x="400" y="440" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#6B6B6B">Add image URL in CSV or upload to public/images/products/</text>
+</svg>
