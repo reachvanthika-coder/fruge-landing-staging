@@ -28,6 +28,14 @@ export default function ProductsIndexPage() {
         <p className="mt-4 max-w-xl font-body text-base text-charcoal/80 sm:text-lg">
           Choose a category to see flavours, pack sizes, and application notes.
         </p>
+        <p className="mt-3 font-body text-sm text-charcoal/60">
+          <Link
+            href="/products/experiment"
+            className="font-semibold text-terracotta underline-offset-4 hover:underline"
+          >
+            Try Glaze Gel stack view experiment →
+          </Link>
+        </p>
 
         <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {categories.map((category) => {

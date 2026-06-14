@@ -1,13 +1,11 @@
 import { CatalogProductImage } from "@/components/catalog/CatalogProductImage";
 import { Button } from "@/components/ui/Button";
 import { SectionContainer } from "@/components/ui/SectionContainer";
-import { getCategoryTheme } from "@/lib/catalog/themes";
 import type { CatalogFlavor } from "@/lib/catalog/types";
 import { cn } from "@/lib/cn";
 
 type FlavorFeatureSectionProps = {
   flavor: CatalogFlavor;
-  categoryId: string;
   index: number;
 };
 
@@ -21,11 +19,10 @@ function flavorSizeSummary(flavor: CatalogFlavor): string {
 
 export function FlavorFeatureSection({
   flavor,
-  categoryId,
   index,
 }: FlavorFeatureSectionProps) {
-  const theme = getCategoryTheme(categoryId);
   const isEven = index % 2 === 0;
+  const showSkuRow = flavor.skus.length > 1;
 
   return (
     <section
@@ -47,12 +44,7 @@ export function FlavorFeatureSection({
                 Featured product
               </p>
             )}
-            <h2
-              className={cn(
-                "font-display text-3xl font-bold leading-tight sm:text-4xl",
-                theme.colorClass,
-              )}
-            >
+            <h2 className="font-display text-3xl font-bold leading-tight text-charcoal sm:text-4xl">
               {flavor.name}
             </h2>
             {flavor.tagline && (
@@ -77,20 +69,40 @@ export function FlavorFeatureSection({
             </div>
           </div>
 
-          <div
-            className={cn(
-              "relative min-h-[280px] overflow-hidden rounded-[var(--radius-card)] border shadow-[var(--shadow-card)]",
-              theme.borderClass,
-            )}
-          >
-            <CatalogProductImage
-              imageUrl={flavorDisplayImageUrl(flavor)}
-              alt={flavor.name}
-              className="absolute inset-0"
-              sizes="(max-width: 1024px) 100vw, 560px"
-            />
+          {/* Pack shot floats on flavour background — no card frame */}
+          <div className="relative mx-auto flex min-h-[280px] w-full max-w-md items-end justify-center sm:min-h-[340px] lg:max-w-lg">
+            <div className="relative h-[min(340px,52vh)] w-full max-w-[280px] sm:max-w-[320px]">
+              <CatalogProductImage
+                variant="packshot"
+                imageUrl={flavorDisplayImageUrl(flavor)}
+                alt={flavor.name}
+                className="absolute inset-0"
+                sizes="(max-width: 1024px) 60vw, 320px"
+              />
+            </div>
           </div>
         </div>
+
+        {showSkuRow && (
+          <ul className="mt-14 flex flex-wrap items-end justify-center gap-x-10 gap-y-8 sm:gap-x-14">
+            {flavor.skus.map((sku) => (
+              <li key={sku.id} className="flex flex-col items-center gap-3">
+                <div className="relative h-36 w-28 sm:h-44 sm:w-32">
+                  <CatalogProductImage
+                    variant="packshot"
+                    imageUrl={sku.imageUrl}
+                    alt={`${flavor.name} — ${sku.sizeLabel}`}
+                    className="absolute inset-0"
+                    sizes="128px"
+                  />
+                </div>
+                <p className="font-body text-sm font-semibold text-charcoal/85">
+                  {sku.sizeLabel}
+                </p>
+              </li>
+            ))}
+          </ul>
+        )}
       </SectionContainer>
     </section>
   );

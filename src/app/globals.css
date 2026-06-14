@@ -74,6 +74,35 @@
   .font-soul {
     font-family: var(--font-soul);
   }
+
+  .packshot-preview-shadow {
+    filter: drop-shadow(0 6px 12px rgba(26, 18, 10, 0.07))
+      drop-shadow(0 20px 28px rgba(26, 18, 10, 0.13));
+  }
+
+  .packshot-ground {
+    background: radial-gradient(
+      ellipse 70% 45% at 50% 50%,
+      rgba(26, 18, 10, 0.14) 0%,
+      rgba(26, 18, 10, 0) 72%
+    );
+  }
+
+  .packshot-float {
+    animation: packshot-float 4.5s ease-in-out infinite;
+    transform-origin: 50% 85%;
+  }
+}
+
+@keyframes packshot-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1.25deg);
+  }
+
+  50% {
+    transform: translateY(-5px) rotate(1.25deg);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
