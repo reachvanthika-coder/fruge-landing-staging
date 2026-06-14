@@ -26,6 +26,9 @@ type FlavorSkuStackInteractorProps = {
   flavors: FlavorSkuStackItem[];
   initialFlavorId?: string;
   className?: string;
+  imageTransitionMode?: ImageTransitionMode;
+  showTransitionToggle?: boolean;
+  onActiveFlavorChange?: (flavor: FlavorSkuStackItem) => void;
 };
 
 function findInitialFlavorIndex(
@@ -77,6 +80,9 @@ export function FlavorSkuStackInteractor({
   flavors,
   initialFlavorId,
   className,
+  imageTransitionMode: imageTransitionModeProp = "crossfade",
+  showTransitionToggle = false,
+  onActiveFlavorChange,
 }: FlavorSkuStackInteractorProps) {
   const isDesktop = useMediaQuery(DESKTOP_BREAKPOINT);
   const carouselOrientation = isDesktop ? "vertical" : "horizontal";
@@ -89,8 +95,11 @@ export function FlavorSkuStackInteractor({
     initialFlavor?.defaultSkuIndex ?? 0,
   );
   const [carouselApi, setCarouselApi] = useState<CarouselApi>();
-  const [imageTransitionMode, setImageTransitionMode] =
+  const [toggleTransitionMode, setToggleTransitionMode] =
     useState<ImageTransitionMode>("crossfade");
+  const imageTransitionMode = showTransitionToggle
+    ? toggleTransitionMode
+    : imageTransitionModeProp;
   const isCarouselScrollingRef = useRef(false);
   const scrollSettleTimerRef = useRef<number | null>(null);
 
@@ -99,6 +108,12 @@ export function FlavorSkuStackInteractor({
   const displayImage = activeFlavor
     ? getFlavorStackImage(activeFlavor, activeSkuIndex)
     : "";
+
+  useEffect(() => {
+    if (activeFlavor) {
+      onActiveFlavorChange?.(activeFlavor);
+    }
+  }, [activeFlavor, onActiveFlavorChange]);
 
   useEffect(() => {
     if (!carouselApi) return;
@@ -320,15 +335,22 @@ export function FlavorSkuStackInteractor({
         </div>
 
         <div className="relative flex w-full flex-col min-[800px]:w-[58%] lg:w-[62%]">
-          <div className="mb-4 flex flex-wrap items-center justify-end gap-3">
-            <p className="font-body text-[11px] text-charcoal/40">Preview</p>
-            <TransitionToggle
-              mode={imageTransitionMode}
-              onChange={setImageTransitionMode}
-            />
-          </div>
+          {showTransitionToggle ? (
+            <div className="mb-4 flex flex-wrap items-center justify-end gap-3">
+              <p className="font-body text-[11px] text-charcoal/40">Preview</p>
+              <TransitionToggle
+                mode={imageTransitionMode}
+                onChange={setToggleTransitionMode}
+              />
+            </div>
+          ) : null}
 
-          <div className="relative mx-auto w-full max-w-sm min-[800px]:max-w-md lg:max-w-lg">
+          <div
+            className={cn(
+              "relative mx-auto w-full max-w-sm min-[800px]:max-w-md lg:max-w-lg",
+              !showTransitionToggle && "min-[800px]:mt-0",
+            )}
+          >
             <FlavorProductPreview
               src={displayImage}
               alt={`${activeFlavor.name}${activeSku ? `, ${activeSku.sizeLabel}` : ""}`}
@@ -383,7 +405,8 @@ export function FlavorSkuStackInteractor({
               </div>
               {activeSku && !activeSku.hasImage ? (
                 <p className="mt-3 font-body text-xs text-charcoal/50">
-                  Pack shot coming soon — showing flavour reference image.
+                  Pack shot pending — add URL in CSV or upload to{" "}
+                  <code className="text-[10px]">public/images/products/</code>
                 </p>
               ) : null}
             </div>

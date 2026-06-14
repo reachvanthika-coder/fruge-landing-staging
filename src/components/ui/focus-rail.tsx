@@ -9,6 +9,7 @@ import {
 } from "framer-motion";
 import { ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import { isPlaceholderSrc } from "@/lib/catalog/resolve-image";
 import { cn } from "@/lib/utils";
 
 export type FocusRailItem = {
@@ -16,6 +17,7 @@ export type FocusRailItem = {
   title: string;
   description?: string;
   imageSrc: string;
+  imagePending?: boolean;
   href?: string;
   meta?: string;
 };
@@ -180,6 +182,8 @@ export function FocusRail({
             const blur = isCenter ? 0 : dist * 6;
             const brightness = isCenter ? 1 : 0.5;
 
+            const isPlaceholder = item.imagePending ?? isPlaceholderSrc(item.imageSrc);
+
             return (
               <motion.div
                 key={absIndex}
@@ -213,8 +217,18 @@ export function FocusRail({
                 <img
                   src={item.imageSrc}
                   alt={item.title}
-                  className="pointer-events-none h-full w-full rounded-2xl object-cover"
+                  className={cn(
+                    "pointer-events-none h-full w-full rounded-2xl",
+                    isPlaceholder
+                      ? "bg-cream object-contain p-4"
+                      : "object-cover",
+                  )}
                 />
+                {isCenter && isPlaceholder ? (
+                  <p className="pointer-events-none absolute inset-x-0 bottom-3 text-center font-body text-[10px] text-cream/70">
+                    Photo pending
+                  </p>
+                ) : null}
                 <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-b from-cream/10 to-transparent" />
                 <div className="pointer-events-none absolute inset-0 rounded-2xl bg-black/10 mix-blend-multiply" />
               </motion.div>

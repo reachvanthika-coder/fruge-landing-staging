@@ -1,6 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="400" height="520" viewBox="0 0 400 520" fill="none" role="img" aria-label="Pack shot pending">
+  <rect width="400" height="520" fill="#FDF6EC"/>
   <rect x="120" y="40" width="160" height="420" rx="24" stroke="#8B5E2A" stroke-width="2" stroke-dasharray="10 8" opacity="0.45"/>
   <rect x="140" y="60" width="120" height="80" rx="8" stroke="#8B5E2A" stroke-width="1.5" stroke-dasharray="6 6" opacity="0.35"/>
   <path d="M150 420h100" stroke="#8B5E2A" stroke-width="2" stroke-dasharray="8 6" opacity="0.35"/>
-  <text x="200" y="490" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#6B6B6B">Pack shot pending</text>
+  <text x="200" y="468" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#1A120A">Pack shot pending</text>
+  <text x="200" y="492" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#6B6B6B">Add skuImageUrl in CSV</text>
 </svg>

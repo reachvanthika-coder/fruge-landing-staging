@@ -1,1 +1,9 @@
 flavorId,flavorSortOrder,flavorName,flavorBackgroundColor,flavorTagline,flavorDescription,featuredOnPage,flavorImageUrl,skuId,skuSortOrder,sizeLabel,skuImageUrl
+strawberry,1,Strawberry,#F8D7E0,Berry-rich filling for layered celebration cakes,,true,,strawberry-300-gm,1,300 gm,
+strawberry,1,Strawberry,#F8D7E0,Berry-rich filling for layered celebration cakes,,true,,strawberry-1-kg,2,1 Kg,
+red-cherry,2,Red Cherry,#FCE8EC,Classic cherry depth for pastries and pies,,true,,red-cherry-300-gm,1,300 gm,
+red-cherry,2,Red Cherry,#FCE8EC,Classic cherry depth for pastries and pies,,true,,red-cherry-1-kg,2,1 Kg,
+blueberry,3,Blueberry,#D6E4F0,Deep berry body with 50% fruit content,,false,,blueberry-300-gm,1,300 gm,
+blueberry,3,Blueberry,#D6E4F0,Deep berry body with 50% fruit content,,false,,blueberry-1-kg,2,1 Kg,
+mango,4,Mango,#FFE0B2,Tropical sunshine between every sponge layer,,false,,mango-1-kg,1,1 Kg,
+pineapple,5,Pineapple,#FFECB3,Golden fruit filling for tropical pastry lines,,false,,pineapple-1-kg,1,1 Kg,

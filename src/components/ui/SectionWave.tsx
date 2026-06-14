@@ -45,6 +45,8 @@ type SectionWaveProps = {
   variant?: 0 | 1 | 2;
   drips?: boolean;
   className?: string;
+  /** Smoothly blend `fromColor` when it changes (e.g. flavour explorer → enquiry) */
+  transitionFromColor?: boolean;
 } & (
   | (SectionTransition & { fromColor?: never; toColor?: never })
   | { fromColor: string; toColor: string; from?: never; to?: never }
@@ -57,7 +59,8 @@ type SectionWaveProps = {
  * Pass `fromColor` / `toColor` for category or flavor-specific hex transitions.
  */
 export function SectionWave(props: SectionWaveProps) {
-  const { variant = 0, drips = true, className } = props;
+  const { variant = 0, drips = true, className, transitionFromColor = false } =
+    props;
 
   const fromColor =
     "fromColor" in props && props.fromColor
@@ -93,7 +96,16 @@ export function SectionWave(props: SectionWaveProps) {
         role="presentation"
       >
         {/* Outgoing section colour fills the full canvas (visible above the wave crest) */}
-        <rect width="1440" height="120" fill={fromColor} />
+        <rect
+          width="1440"
+          height="120"
+          fill={fromColor}
+          className={
+            transitionFromColor
+              ? "transition-[fill] duration-500 ease-out"
+              : undefined
+          }
+        />
         {/* Incoming section colour fills below the wave curve */}
         <path d={path} fill={toColor} className="section-wave-path" />
         {drips && (

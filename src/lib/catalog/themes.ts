@@ -44,6 +44,16 @@ export const categoryThemes: Record<string, CategoryTheme> = {
     application:
       "Dessert drizzle, ice cream topping, cake decoration & brownie sauce",
   },
+  jam: {
+    colorClass: "text-terracotta",
+    borderClass: "border-terracotta/30 hover:border-terracotta/60",
+    application: "Spreads, bakery fillings & pastry use",
+  },
+  "flavoured-water": {
+    colorClass: "text-syrup-emerald",
+    borderClass: "border-syrup-emerald/30 hover:border-syrup-emerald/60",
+    application: "Mithai prep, beverages & traditional recipe enhancement",
+  },
 };
 
 export function getCategoryTheme(categoryId: string): CategoryTheme {

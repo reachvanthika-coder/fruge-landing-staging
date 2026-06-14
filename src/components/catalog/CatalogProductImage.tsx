@@ -1,4 +1,7 @@
-import { resolveCatalogImage } from "@/lib/catalog/resolve-image";
+import {
+  PLACEHOLDER_PACKSHOT_IMAGE,
+  resolveCatalogImage,
+} from "@/lib/catalog/resolve-image";
 import { cn } from "@/lib/cn";
 import Image from "next/image";
 
@@ -16,8 +19,6 @@ type CatalogProductImageProps = {
   variant?: CatalogImageVariant;
 };
 
-const PLACEHOLDER_PACKSHOT = "/images/placeholder-packshot.svg";
-
 export function CatalogProductImage({
   imageUrl,
   alt,
@@ -32,8 +33,11 @@ export function CatalogProductImage({
   const isPackshot = variant === "packshot";
   const src =
     resolved.isPlaceholder && isPackshot
-      ? PLACEHOLDER_PACKSHOT
+      ? PLACEHOLDER_PACKSHOT_IMAGE
       : resolved.src;
+  const pendingLabel = isPackshot
+    ? "Pack shot pending — add URL in CSV"
+    : "Photo pending — add URL in CSV";
 
   return (
     <div
@@ -66,7 +70,7 @@ export function CatalogProductImage({
           )}
           aria-hidden="true"
         >
-          {isPackshot ? "Add PNG in CSV" : "Photo pending — add URL in CSV"}
+          {pendingLabel}
         </p>
       )}
     </div>

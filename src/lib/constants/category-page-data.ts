@@ -263,8 +263,8 @@ export const categoryPageData: Record<CategoryCard["id"], CategoryPageData> = {
       },
     ],
   },
-  "fruit-jam": {
-    categoryId: "fruit-jam",
+  jam: {
+    categoryId: "jam",
     application: "Spreads, bakery fillings & pastry use",
     heroBg: "#FFF0E0",
     flavorTones: ["#FFF0E0", "#FFE6CC", "#FFDCB8"],

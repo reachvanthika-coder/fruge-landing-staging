@@ -1,7 +1,13 @@
 import { CategoryEnquiryCta } from "@/components/category/CategoryEnquiryCta";
+import { CategoryExplorerSection } from "@/components/category/CategoryExplorerSection";
 import { CategoryHero } from "@/components/category/CategoryHero";
 import { FlavorFeatureSection } from "@/components/category/FlavorFeatureSection";
 import { SectionWave } from "@/components/ui/SectionWave";
+import {
+  categoryUsesExplorerLayout,
+  getExplorerInitialFlavorId,
+} from "@/lib/catalog/explorer-config";
+import { flavorsToStackItems } from "@/lib/catalog/flavor-stack-items";
 import type { CatalogCategoryPage } from "@/lib/catalog/types";
 
 type CategoryPageViewProps = {
@@ -10,6 +16,29 @@ type CategoryPageViewProps = {
 
 export function CategoryPageView({ page }: CategoryPageViewProps) {
   const { category, flavors, application } = page;
+
+  if (categoryUsesExplorerLayout(flavors)) {
+    const stackItems = flavorsToStackItems(flavors);
+    const initialFlavorId = getExplorerInitialFlavorId(category.id, flavors);
+
+    return (
+      <main className="overflow-x-hidden bg-cream">
+        <CategoryHero
+          category={category}
+          application={application}
+          showRangeImage={false}
+        />
+
+        <CategoryExplorerSection
+          flavors={stackItems}
+          initialFlavorId={initialFlavorId}
+          imageTransitionMode="crossfade"
+        />
+
+        <CategoryEnquiryCta categoryTitle={category.title} />
+      </main>
+    );
+  }
 
   let previousBg = category.backgroundColor;
 

@@ -10,7 +10,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Products — Frugel",
   description:
-    "Professional ingredient ranges from Goa: Glaze Gels, Fruit Fillings, Crushes, Syrups, Fondants, and Chocolate Sauce.",
+    "Professional ingredient ranges from Goa: Glaze Gels, Fruit Fillings, Crushes, Syrups, Fondants, Fruit Jam, Chocolate Sauce, and Flavoured Water.",
 };
 
 export default function ProductsIndexPage() {
@@ -23,7 +23,7 @@ export default function ProductsIndexPage() {
 
         <SectionEyebrow className="mt-8">What we make</SectionEyebrow>
         <h1 className="max-w-3xl font-display text-4xl font-bold leading-tight text-charcoal sm:text-5xl lg:text-6xl">
-          Six ranges. One Goan kitchen.
+          {categories.length} ranges. One Goan kitchen.
         </h1>
         <p className="mt-4 max-w-xl font-body text-base text-charcoal/80 sm:text-lg">
           Choose a category to see flavours, pack sizes, and application notes.

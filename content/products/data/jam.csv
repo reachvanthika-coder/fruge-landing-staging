@@ -1,0 +1,9 @@
+flavorId,flavorSortOrder,flavorName,flavorBackgroundColor,flavorTagline,flavorDescription,featuredOnPage,flavorImageUrl,skuId,skuSortOrder,sizeLabel,skuImageUrl
+strawberry,1,Strawberry,#F8D7E0,Slow-cooked berry spread bakers trust daily,,true,,strawberry-1-kg,1,1 Kg,
+strawberry,1,Strawberry,#F8D7E0,Slow-cooked berry spread bakers trust daily,,true,,strawberry-4-kg,2,4 Kg,
+mango,2,Mango,#FFE0B2,Alphonso-style richness for bakery counters,,true,,mango-1-kg,1,1 Kg,
+mango,2,Mango,#FFE0B2,Alphonso-style richness for bakery counters,,true,,mango-4-kg,2,4 Kg,
+pineapple,3,Pineapple,#FFECB3,Tropical sweetness for tarts and toast lines,,false,,pineapple-1-kg,1,1 Kg,
+pineapple,3,Pineapple,#FFECB3,Tropical sweetness for tarts and toast lines,,false,,pineapple-4-kg,2,4 Kg,
+mixed-fruit,4,Mixed Fruit,#FFF0E0,An orchard blend for versatile pastry use,,false,,mixed-fruit-1-kg,1,1 Kg,
+mixed-fruit,4,Mixed Fruit,#FFF0E0,An orchard blend for versatile pastry use,,false,,mixed-fruit-4-kg,2,4 Kg,

@@ -1,6 +1,6 @@
 "use client";
 
-import { FlavorSkuStackInteractor } from "@/components/ui/flavor-sku-stack-interactor";
+import { CategoryFlavorExplorer } from "@/components/category/CategoryFlavorExplorer";
 import { Button } from "@/components/ui/Button";
 import type { FlavorSkuStackItem } from "@/lib/catalog/flavor-stack-items";
 import Link from "next/link";
@@ -38,7 +38,7 @@ export function FlavorSkuExperimentView({
           </div>
           <div className="flex flex-wrap gap-3">
             <Button href={standardPageHref} variant="secondary" size="sm">
-              Standard page
+              Live page
             </Button>
             <Button href="/#enquiry" variant="primary" size="sm">
               Request samples
@@ -62,22 +62,23 @@ export function FlavorSkuExperimentView({
         </div>
       </div>
 
-      <FlavorSkuStackInteractor
+      <CategoryFlavorExplorer
         flavors={flavors}
         initialFlavorId={initialFlavorId}
+        showTransitionToggle
       />
 
       <div className="border-t border-charcoal/10 px-6 py-10 md:px-24">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <p className="font-body text-sm text-charcoal/65">
-            {flavors.length} flavours in this range. Compare with the full scroll
-            layout on the standard category page.
+            {flavors.length} flavours in this range. Compare with the live category
+            page or keep iterating here.
           </p>
           <Link
             href={standardPageHref}
             className="font-body text-sm font-semibold text-terracotta underline-offset-4 hover:underline"
           >
-            Open standard {categoryTitle} page →
+            Open live {categoryTitle} page →
           </Link>
         </div>
       </div>

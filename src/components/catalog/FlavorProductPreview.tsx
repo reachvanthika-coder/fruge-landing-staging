@@ -1,5 +1,6 @@
 "use client";
 
+import { isPlaceholderSrc } from "@/lib/catalog/resolve-image";
 import { cn } from "@/lib/cn";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
@@ -108,12 +109,22 @@ export function FlavorProductPreview({
           priority={priority}
           className={cn(
             packshotImageClass,
+            isPlaceholderSrc(layers.current) && "opacity-90",
             mode === "crossfade" && "transition-opacity duration-300",
             layers.previous && !layers.visible ? "opacity-0" : "opacity-100",
           )}
           sizes={sizes}
         />
       </div>
+
+      {isPlaceholderSrc(layers.current) ? (
+        <p
+          className="absolute inset-x-0 bottom-3 z-20 text-center font-body text-[11px] text-charcoal/50"
+          aria-hidden="true"
+        >
+          Pack shot pending — add URL in CSV
+        </p>
+      ) : null}
     </div>
   );
 }

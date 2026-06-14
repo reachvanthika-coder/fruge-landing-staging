@@ -10,9 +10,15 @@ import { cn } from "@/lib/cn";
 type CategoryHeroProps = {
   category: CatalogCategory;
   application: string;
+  /** Hide the large range photo when flavour explorer handles product visuals */
+  showRangeImage?: boolean;
 };
 
-export function CategoryHero({ category, application }: CategoryHeroProps) {
+export function CategoryHero({
+  category,
+  application,
+  showRangeImage = true,
+}: CategoryHeroProps) {
   const theme = getCategoryTheme(category.id);
 
   return (
@@ -49,21 +55,23 @@ export function CategoryHero({ category, application }: CategoryHeroProps) {
           <Button href="/#enquiry" size="lg">
             Request samples
           </Button>
-          <Button href="/#product-river" variant="secondary" size="lg">
+          <Button href="/products" variant="secondary" size="lg">
             All ranges
           </Button>
         </div>
 
-        <div className="relative mx-auto mt-12 aspect-[16/10] w-full max-w-3xl overflow-hidden rounded-[var(--radius-card)] shadow-[var(--shadow-product)] ring-1 ring-charcoal/10">
-          <CatalogProductImage
-            imageUrl={category.heroImageUrl}
-            alt={`${category.title} range`}
-            className="absolute inset-0"
-            sizes="(max-width: 768px) 100vw, 768px"
-            priority
-          />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-charcoal/30 to-transparent" />
-        </div>
+        {showRangeImage ? (
+          <div className="relative mx-auto mt-12 aspect-[16/10] w-full max-w-3xl overflow-hidden rounded-[var(--radius-card)] shadow-[var(--shadow-product)] ring-1 ring-charcoal/10">
+            <CatalogProductImage
+              imageUrl={category.heroImageUrl}
+              alt={`${category.title} range`}
+              className="absolute inset-0"
+              sizes="(max-width: 768px) 100vw, 768px"
+              priority
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-charcoal/30 to-transparent" />
+          </div>
+        ) : null}
       </SectionContainer>
     </section>
   );

@@ -1,4 +1,4 @@
-import { resolveCatalogImage } from "@/lib/catalog/resolve-image";
+import { resolvePackshotImage } from "@/lib/catalog/resolve-image";
 import type { CatalogFlavor, CatalogSku } from "@/lib/catalog/types";
 
 export type FlavorSkuStackItem = {
@@ -33,12 +33,12 @@ function resolveSkuDisplayImage(
   sku: CatalogSku,
   flavorImageUrl: string | null,
 ): { src: string; hasImage: boolean } {
-  const skuResolved = resolveCatalogImage(sku.imageUrl);
+  const skuResolved = resolvePackshotImage(sku.imageUrl);
   if (!skuResolved.isPlaceholder) {
     return { src: skuResolved.src, hasImage: true };
   }
 
-  const flavorResolved = resolveCatalogImage(flavorImageUrl);
+  const flavorResolved = resolvePackshotImage(flavorImageUrl);
   return {
     src: flavorResolved.src,
     hasImage: !flavorResolved.isPlaceholder,
