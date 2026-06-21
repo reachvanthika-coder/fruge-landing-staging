@@ -175,14 +175,6 @@ export const footerCopy = {
   columns: {
     products: {
       title: "Products",
-      links: [
-        "Glaze Gel",
-        "Crushes & Syrups",
-        "Sugar Fondant",
-        "Fruit Filling",
-        "Fruit Jam",
-        "Chocolate Sauce",
-      ],
     },
     partners: {
       title: "Partners",

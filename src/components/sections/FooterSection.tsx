@@ -3,6 +3,7 @@ import { DripDivider } from "@/components/ui/DripDivider";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { SoulText } from "@/components/ui/SoulText";
 import { footerCopy } from "@/lib/constants/copy";
+import { getFooterProductLinks } from "@/lib/constants/nav";
 import { getAsset } from "@/lib/assets";
 import {
   getAboutSecondary,
@@ -18,6 +19,19 @@ import { BrandLogo } from "@/components/ui/BrandLogo";
 export function FooterSection() {
   const dripBackdrop = getAsset("footer-drip-backdrop");
   const connectLinks = getConnectLinks();
+  const productLinks = getFooterProductLinks();
+
+  const footerNavColumns = [
+    { key: "products", title: footerCopy.columns.products.title, links: productLinks },
+    {
+      key: "partners",
+      title: footerCopy.columns.partners.title,
+      links: footerCopy.columns.partners.links.map((label) => ({
+        label,
+        href: "#",
+      })),
+    },
+  ];
 
   return (
     <footer
@@ -73,19 +87,19 @@ export function FooterSection() {
           className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-3"
           data-gsap="footer-columns"
         >
-          {Object.entries(footerCopy.columns).map(([key, column]) => (
-            <nav key={key} aria-label={column.title}>
+          {footerNavColumns.map((column) => (
+            <nav key={column.key} aria-label={column.title}>
               <h3 className="mb-4 font-body text-sm font-semibold uppercase tracking-wider text-red-drip">
                 {column.title}
               </h3>
               <ul className="space-y-2">
                 {column.links.map((link) => (
-                  <li key={link}>
+                  <li key={link.label}>
                     <Link
-                      href="#"
+                      href={link.href}
                       className="font-body text-sm text-cream/70 transition-colors hover:text-cream"
                     >
-                      {link}
+                      {link.label}
                     </Link>
                   </li>
                 ))}
