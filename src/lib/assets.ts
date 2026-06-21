@@ -30,7 +30,7 @@ export const ASSETS: Record<string, AssetDefinition> = {
   "hero-product-arrangement": {
     id: "hero-product-arrangement",
     label: "Hero product still-life arrangement",
-    path: null,
+    path: "/images/landing/hero/hero-product-arrangement.png",
     aspectRatio: "16/9",
     variant: "image",
     dimensions: "1920×1080 · 8–10 products from all 6 categories",
@@ -95,15 +95,15 @@ export const ASSETS: Record<string, AssetDefinition> = {
   "origin-goa-map": {
     id: "origin-goa-map",
     label: "Illustrated Goa map",
-    path: null,
+    path: "/images/landing/sections/origin/origin-goa-map.png",
     aspectRatio: "4/3",
-    variant: "svg",
+    variant: "image",
     dimensions: "800×600 · hand-drawn style with markers",
   },
   "origin-farm-panel": {
     id: "origin-farm-panel",
     label: "Goa farm / nature panel",
-    path: null,
+    path: "/images/landing/sections/origin/origin-farm-panel.png",
     aspectRatio: "3/4",
     variant: "image",
     dimensions: "1200×1600",
@@ -112,7 +112,7 @@ export const ASSETS: Record<string, AssetDefinition> = {
   "origin-factory-panel": {
     id: "origin-factory-panel",
     label: "Kundaim IDC factory / lab panel",
-    path: null,
+    path: "/images/landing/sections/origin/origin-factory-panel.png",
     aspectRatio: "3/4",
     variant: "image",
     dimensions: "1200×1600",
@@ -121,7 +121,7 @@ export const ASSETS: Record<string, AssetDefinition> = {
   "problem-fruit-mango": {
     id: "problem-fruit-mango",
     label: "Mango silhouette SVG",
-    path: null,
+    path: "/images/landing/sections/problem/problem-fruit-mango.svg",
     aspectRatio: "1/1",
     variant: "svg",
     dimensions: "80×80",
@@ -129,7 +129,7 @@ export const ASSETS: Record<string, AssetDefinition> = {
   "problem-fruit-cashew": {
     id: "problem-fruit-cashew",
     label: "Cashew silhouette SVG",
-    path: null,
+    path: "/images/landing/sections/problem/problem-fruit-cashew.svg",
     aspectRatio: "1/1",
     variant: "svg",
     dimensions: "80×80",
@@ -137,7 +137,7 @@ export const ASSETS: Record<string, AssetDefinition> = {
   "problem-fruit-kokum": {
     id: "problem-fruit-kokum",
     label: "Kokum silhouette SVG",
-    path: null,
+    path: "/images/landing/sections/problem/problem-fruit-kokum.svg",
     aspectRatio: "1/1",
     variant: "svg",
     dimensions: "80×80",
@@ -172,7 +172,7 @@ export const ASSETS: Record<string, AssetDefinition> = {
   "founders-couple-photo": {
     id: "founders-couple-photo",
     label: "Founders portrait",
-    path: null,
+    path: "/images/landing/sections/founders/founders-couple-photo.png",
     aspectRatio: "4/5",
     variant: "image",
     dimensions: "800×1000",

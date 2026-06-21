@@ -124,7 +124,6 @@ export function PageAnimations() {
           { trigger: "[data-gsap='why-partner-grid']", child: "> *" },
           { trigger: "[data-gsap='founders-credentials']", child: "> *" },
           { trigger: "[data-gsap='problem-callouts']", child: "> *" },
-          { trigger: "[data-gsap='innovation-chips']", child: "> *" },
           { trigger: "[data-gsap='dealer-counters']", child: "> *" },
           { trigger: "[data-gsap='footer-columns']", child: "> *" },
         ];
@@ -134,7 +133,7 @@ export function PageAnimations() {
           if (!container) return;
 
           gsap.from(`${trigger} ${child}`, {
-            y: 56,
+            y: 32,
             opacity: 0,
             duration: 0.75,
             stagger: 0.11,
@@ -195,23 +194,7 @@ export function PageAnimations() {
           });
         }
 
-        /* ── Innovation bottle spotlight ── */
-        const bottle = document.querySelector("[data-gsap='innovation-bottle']");
-        if (bottle) {
-          gsap.from(bottle, {
-            scale: 0.82,
-            opacity: 0,
-            duration: 1.1,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: bottle,
-              start: "top 75%",
-              toggleActions: "play none none reverse",
-            },
-          });
-        }
-
-        /* ── Panel wipe (origin + founders) ── */
+        /* ── Panel wipe (origin) ── */
         gsap.utils
           .toArray<HTMLElement>("[data-animate='panel-reveal']")
           .forEach((el, i) => {

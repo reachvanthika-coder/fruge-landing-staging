@@ -1,15 +1,13 @@
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
-import { AssetPlaceholder } from "@/components/ui/AssetPlaceholder";
 import { Button } from "@/components/ui/Button";
+import { IndiaSupplyMap } from "@/components/ui/IndiaSupplyMap";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
-import { getAsset } from "@/lib/assets";
 import { dealerCopy } from "@/lib/constants/copy";
 import { formatStat, getNetworkCounters } from "@/lib/site-config";
 import { MapPin } from "lucide-react";
 
 export function DealerNetworkSection() {
-  const map = getAsset("dealer-india-map");
   const counters = getNetworkCounters();
 
   return (
@@ -43,33 +41,14 @@ export function DealerNetworkSection() {
         </div>
 
         <div
-          className="mt-12 grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-center"
+          className="mt-12 grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-start"
           data-gsap="dealer-map-block"
         >
-          <div
-            className="relative"
-            role="img"
-            aria-label="Map showing Frugel dealer network across India, headquartered in Kundaim IDC, Goa"
-            data-animate="scale-in"
-            data-gsap="dealer-map"
-          >
-            {map && (
-              <AssetPlaceholder
-                assetId={map.id}
-                label={map.label}
-                aspectRatio={map.aspectRatio}
-                variant="svg"
-                dimensions={map.dimensions}
-              />
-            )}
-            <div
-              className="absolute left-[28%] top-[72%] flex h-6 w-6 items-center justify-center rounded-full bg-red-drip ring-4 ring-red-drip/30"
-              aria-hidden="true"
-              data-gsap="dealer-goa-pin"
-            />
+          <div data-animate="scale-in" data-gsap="dealer-map">
+            <IndiaSupplyMap />
           </div>
 
-          <ul className="space-y-4" data-gsap="dealer-callouts">
+          <ul className="space-y-4 lg:pt-4" data-gsap="dealer-callouts">
             {dealerCopy.mapCallouts.map((callout) => (
               <li
                 key={callout}

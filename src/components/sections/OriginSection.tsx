@@ -1,4 +1,4 @@
-import { AssetPlaceholder } from "@/components/ui/AssetPlaceholder";
+import { SiteAsset } from "@/components/ui/SiteAsset";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
 import { SoulText } from "@/components/ui/SoulText";
@@ -38,24 +38,12 @@ export function OriginSection() {
         <div className="mt-10 grid gap-6 lg:grid-cols-2" data-gsap="origin-panels">
           {farm && (
             <div data-animate="panel-reveal" data-gsap="origin-farm-panel">
-              <AssetPlaceholder
-                assetId={farm.id}
-                label={farm.label}
-                aspectRatio={farm.aspectRatio}
-                variant="image"
-                dimensions={farm.dimensions}
-              />
+              <SiteAsset asset={farm} objectFit="cover" />
             </div>
           )}
           {factory && (
             <div data-animate="panel-reveal" data-gsap="origin-factory-panel">
-              <AssetPlaceholder
-                assetId={factory.id}
-                label={factory.label}
-                aspectRatio={factory.aspectRatio}
-                variant="image"
-                dimensions={factory.dimensions}
-              />
+              <SiteAsset asset={factory} objectFit="cover" />
             </div>
           )}
         </div>
@@ -91,13 +79,7 @@ export function OriginSection() {
               data-animate="scale-in"
               data-gsap="origin-map"
             >
-              <AssetPlaceholder
-                assetId={map.id}
-                label={map.label}
-                aspectRatio={map.aspectRatio}
-                variant="svg"
-                dimensions={map.dimensions}
-              />
+              <SiteAsset asset={map} objectFit="contain" />
             </div>
           )}
 

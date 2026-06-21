@@ -1,6 +1,6 @@
 import { BrandLogo } from "@/components/ui/BrandLogo";
 import { Button } from "@/components/ui/Button";
-import { AssetPlaceholder } from "@/components/ui/AssetPlaceholder";
+import { SiteAsset } from "@/components/ui/SiteAsset";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { SoulText } from "@/components/ui/SoulText";
 import { getAsset } from "@/lib/assets";
@@ -9,7 +9,6 @@ import { ChevronDown } from "lucide-react";
 
 export function HeroSection() {
   const productArrangement = getAsset("hero-product-arrangement");
-  const dripSvg = getAsset("hero-drip-svg");
 
   return (
     <section
@@ -25,13 +24,13 @@ export function HeroSection() {
           data-gsap="hero-products"
           aria-hidden="true"
         >
-          <AssetPlaceholder
-            assetId={productArrangement.id}
-            label={productArrangement.label}
-            aspectRatio="16/9"
-            variant="image"
-            dimensions={productArrangement.dimensions}
-            className="!absolute inset-0 !aspect-auto h-full w-full rounded-none border-0 opacity-60"
+          <SiteAsset
+            asset={productArrangement}
+            fill
+            priority
+            sizes="100vw"
+            imageClassName="opacity-60"
+            className="!absolute inset-0 h-full w-full"
           />
         </div>
       )}
@@ -42,20 +41,8 @@ export function HeroSection() {
         maxWidth="wide"
         innerClassName="relative z-10 flex flex-col items-center pb-16 pt-28 text-center sm:pb-20 sm:pt-36"
       >
-        {/* Logo + drip animation area */}
+        {/* TODO: Re-enable hero-drip-svg above logo when asset is ready (assets.ts → hero-drip-svg) */}
         <div className="mb-8 flex flex-col items-center" data-gsap="hero-logo-drip">
-          {dripSvg && (
-            <div className="mb-4 hidden sm:block" aria-hidden="true">
-              <AssetPlaceholder
-                assetId={dripSvg.id}
-                label={dripSvg.label}
-                aspectRatio="1/1"
-                variant="svg"
-                dimensions={dripSvg.dimensions}
-                className="!h-16 !w-16 border-red-drip/30 !p-2"
-              />
-            </div>
-          )}
           <BrandLogo on="dark" priority className="!h-14 sm:!h-16" />
         </div>
 
@@ -82,7 +69,7 @@ export function HeroSection() {
           className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center"
           data-gsap="hero-ctas"
         >
-          <Button href="#product-river" size="lg">
+          <Button href="/products" size="lg">
             {heroCopy.primaryCta}
           </Button>
           <Button

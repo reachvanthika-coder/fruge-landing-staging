@@ -1,5 +1,5 @@
-import { AssetPlaceholder } from "@/components/ui/AssetPlaceholder";
 import { IconBadge } from "@/components/ui/IconBadge";
+import { SiteAsset } from "@/components/ui/SiteAsset";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
 import { getAsset } from "@/lib/assets";
@@ -22,14 +22,12 @@ const credentialIcons: Record<string, LucideIcon> = {
 };
 
 export function FoundersSection() {
-  const farm = getAsset("founders-farm-panel");
-  const lab = getAsset("founders-lab-panel");
   const photo = getAsset("founders-couple-photo");
 
   return (
     <section
       id="founders"
-      className="overflow-hidden bg-cream py-20 grain-overlay sm:py-28"
+      className="overflow-hidden bg-cream py-20 grain-overlay sm:pt-28 sm:pb-16"
       aria-label="Founders"
       data-gsap="founders-section"
     >
@@ -45,31 +43,6 @@ export function FoundersSection() {
           </span>
         </h2>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-2" data-gsap="founders-panels">
-          {farm && (
-            <div data-animate="panel-reveal" data-gsap="founders-farm-panel">
-              <AssetPlaceholder
-                assetId={farm.id}
-                label={farm.label}
-                aspectRatio={farm.aspectRatio}
-                variant="image"
-                dimensions={farm.dimensions}
-              />
-            </div>
-          )}
-          {lab && (
-            <div data-animate="panel-reveal" data-gsap="founders-lab-panel">
-              <AssetPlaceholder
-                assetId={lab.id}
-                label={lab.label}
-                aspectRatio={farm?.aspectRatio ?? "3/4"}
-                variant="image"
-                dimensions={lab.dimensions}
-              />
-            </div>
-          )}
-        </div>
-
         <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_auto] lg:items-start">
           <div className="space-y-5" data-gsap="founders-body">
             {foundersCopy.body.map((paragraph) => (
@@ -84,23 +57,22 @@ export function FoundersSection() {
 
           {photo && (
             <div
-              className="mx-auto w-full max-w-xs overflow-hidden rounded-[var(--radius-card)] lg:max-w-sm"
+              className="relative mx-auto w-full max-w-[min(100%,20rem)] shrink-0 sm:max-w-sm lg:w-80"
               data-animate="scale-in"
               data-gsap="founders-photo"
             >
-              <AssetPlaceholder
-                assetId={photo.id}
-                label={photo.label}
-                aspectRatio={photo.aspectRatio}
-                variant="image"
-                dimensions={photo.dimensions}
+              <SiteAsset
+                asset={photo}
+                objectFit="cover"
+                className="w-full"
+                sizes="(max-width: 1024px) 80vw, 320px"
               />
             </div>
           )}
         </div>
 
         <div
-          className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+          className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
           data-gsap="founders-credentials"
         >
           {foundersCopy.credentials.map((cred) => {

@@ -27,8 +27,7 @@ export const SECTION_TRANSITIONS: SectionTransition[] = [
   { from: "dark", to: "cream", variant: 0, drips: true },       // Hero → Product River
   { from: "cream", to: "sand", variant: 1, drips: true },       // Product → Origin
   { from: "sand", to: "forest", variant: 2, drips: true },      // Origin → Problem
-  { from: "forest", to: "dark", variant: 0, drips: true },     // Problem → Innovation
-  { from: "dark", to: "cream", variant: 1, drips: true },        // Innovation → Founders
+  { from: "forest", to: "cream", variant: 1, drips: true },     // Problem → Founders
   // Founders → Why Partner: both cream — no wave
   { from: "cream", to: "warmGrey", variant: 0, drips: true },  // Why Partner → Dealer
   { from: "warmGrey", to: "dark", variant: 1, drips: true },   // Dealer → Enquiry

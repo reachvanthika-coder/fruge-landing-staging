@@ -8,7 +8,7 @@ export function WhyPartnerSection() {
   return (
     <section
       id="why-partner"
-      className="bg-cream py-20 grain-overlay sm:py-28"
+      className="bg-cream pt-20 pb-12 grain-overlay sm:pt-28 sm:pb-14"
       aria-label="Why Partner"
       data-gsap="why-partner-section"
     >
@@ -32,7 +32,7 @@ export function WhyPartnerSection() {
         </p>
 
         <div
-          className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
+          className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6"
           data-gsap="why-partner-grid"
         >
           {reasonCards.map((card) => (

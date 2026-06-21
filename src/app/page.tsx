@@ -5,7 +5,6 @@ import { EnquirySection } from "@/components/sections/EnquirySection";
 import { FooterSection } from "@/components/sections/FooterSection";
 import { FoundersSection } from "@/components/sections/FoundersSection";
 import { HeroSection } from "@/components/sections/HeroSection";
-import { InnovationSection } from "@/components/sections/InnovationSection";
 import { OriginSection } from "@/components/sections/OriginSection";
 import { ProblemSection } from "@/components/sections/ProblemSection";
 import { ProductRiverSection } from "@/components/sections/ProductRiverSection";
@@ -26,10 +25,7 @@ export default function HomePage() {
         <SectionWave from="sand" to="forest" variant={2} />
 
         <ProblemSection />
-        <SectionWave from="forest" to="dark" variant={0} />
-
-        <InnovationSection />
-        <SectionWave from="dark" to="cream" variant={1} />
+        <SectionWave from="forest" to="cream" variant={1} />
 
         <FoundersSection />
         {/* Founders + Why Partner share cream — no wave */}

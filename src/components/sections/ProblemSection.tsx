@@ -1,5 +1,5 @@
 import { DataCalloutCard } from "@/components/ui/DataCalloutCard";
-import { AssetPlaceholder } from "@/components/ui/AssetPlaceholder";
+import { SiteAsset } from "@/components/ui/SiteAsset";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
 import { getAsset } from "@/lib/assets";
@@ -28,14 +28,12 @@ export function ProblemSection() {
           const asset = getAsset(id);
           if (!asset) return null;
           return (
-            <AssetPlaceholder
+            <SiteAsset
               key={id}
-              assetId={asset.id}
-              label={asset.label}
-              aspectRatio="1/1"
-              variant="svg"
-              dimensions={asset.dimensions}
-              className="!h-16 !w-16 border-cream/20 bg-cream/5 !p-2"
+              asset={asset}
+              objectFit="contain"
+              className="!h-16 !w-16 !aspect-auto shrink-0 rounded-lg border border-cream/20 bg-cream/5 !p-2"
+              imageClassName="opacity-90"
             />
           );
         })}

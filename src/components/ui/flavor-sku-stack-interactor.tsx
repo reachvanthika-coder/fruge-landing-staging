@@ -21,6 +21,14 @@ import { cn } from "@/lib/utils";
 import { useEffect, useRef, useState } from "react";
 
 const DESKTOP_BREAKPOINT = "(min-width: 800px)";
+/** Vertical carousel: flavour rows visible at once on desktop (use basis-1/N) */
+const DESKTOP_VISIBLE_FLAVORS = 5;
+const DESKTOP_FLAVOR_BASIS_CLASS =
+  DESKTOP_VISIBLE_FLAVORS === 5
+    ? "basis-1/5"
+    : DESKTOP_VISIBLE_FLAVORS === 4
+      ? "basis-1/4"
+      : "basis-1/3";
 
 type FlavorSkuStackInteractorProps = {
   flavors: FlavorSkuStackItem[];
@@ -212,14 +220,13 @@ export function FlavorSkuStackInteractor({
               opts={{ align: "start", containScroll: "trimSnaps" }}
               setApi={setCarouselApi}
               className={cn(
-                "w-full",
-                isDesktop ? "px-1 pt-11 pb-11" : "px-8 py-2",
+                isDesktop ? "px-0 pt-9 pb-9" : "px-8 py-2",
               )}
             >
               <CarouselContent
                 className={cn(
                   isDesktop
-                    ? "-mt-2 h-[min(26rem,48vh)] sm:h-[min(28rem,52vh)]"
+                    ? "-mt-1 h-[min(28rem,52vh)] sm:h-[min(30rem,56vh)]"
                     : "-ml-2 h-auto",
                 )}
               >
@@ -227,7 +234,7 @@ export function FlavorSkuStackInteractor({
                   <CarouselItem
                     key={flavor.id}
                     className={cn(
-                      isDesktop ? "basis-1/3 pt-2" : "basis-[82%] pl-2",
+                      isDesktop ? `${DESKTOP_FLAVOR_BASIS_CLASS} pt-1` : "basis-[82%] pl-2",
                     )}
                   >
                     <button
@@ -245,7 +252,7 @@ export function FlavorSkuStackInteractor({
                       onClick={() => selectFlavor(index)}
                       className={cn(
                         "group h-full w-full cursor-pointer rounded-[var(--radius-card)] text-left transition-colors",
-                        isDesktop ? "px-2 py-1" : "min-h-[5.5rem] px-3 py-3",
+                        isDesktop ? "px-1.5 py-0.5" : "min-h-[5.5rem] px-3 py-3",
                         activeFlavorIndex === index
                           ? "bg-white/45"
                           : "hover:bg-white/30",
@@ -255,15 +262,15 @@ export function FlavorSkuStackInteractor({
                       <div
                         className={cn(
                           "flex h-full items-start",
-                          isDesktop ? "gap-3 min-[800px]:gap-4" : "gap-2.5",
+                          isDesktop ? "gap-2" : "gap-2.5",
                         )}
                       >
                         <span
                           className={cn(
-                            "mt-0.5 shrink-0 font-display font-bold transition-all duration-500",
-                            isDesktop ? "text-lg min-[800px]:text-xl" : "text-base",
+                            "shrink-0 font-display font-bold leading-none transition-all duration-500",
+                            isDesktop ? "text-sm" : "text-base",
                             activeFlavorIndex === index
-                              ? "scale-110 text-terracotta"
+                              ? "scale-105 text-terracotta"
                               : "text-charcoal/30",
                           )}
                         >
@@ -271,15 +278,15 @@ export function FlavorSkuStackInteractor({
                         </span>
 
                         <div className="min-w-0 flex-1">
-                          <div className="flex flex-wrap items-center gap-2">
+                          <div className="flex flex-wrap items-center gap-1.5">
                             <h2
                               className={cn(
-                                "font-display font-bold uppercase leading-[0.9] tracking-tighter transition-all duration-700",
+                                "font-display font-bold uppercase leading-[0.95] tracking-tight transition-all duration-500",
                                 isDesktop
-                                  ? "text-xl sm:text-2xl min-[800px]:text-3xl lg:text-4xl"
+                                  ? "text-base sm:text-lg lg:text-xl"
                                   : "text-lg sm:text-xl",
                                 activeFlavorIndex === index
-                                  ? "translate-x-0.5 text-charcoal opacity-100 min-[800px]:translate-x-2"
+                                  ? "translate-x-0.5 text-charcoal opacity-100"
                                   : "translate-x-0 text-charcoal/35 opacity-50",
                               )}
                             >
@@ -292,7 +299,7 @@ export function FlavorSkuStackInteractor({
                               ) : null}
                             </h2>
                             {flavor.featured ? (
-                              <span className="rounded-full border border-glaze-caramel/40 bg-white/50 px-2 py-0.5 font-body text-[10px] font-semibold uppercase tracking-wider text-glaze-caramel">
+                              <span className="rounded-full border border-glaze-caramel/40 bg-white/50 px-1.5 py-px font-body text-[9px] font-semibold uppercase tracking-wider text-glaze-caramel">
                                 Signature
                               </span>
                             ) : null}
@@ -301,7 +308,7 @@ export function FlavorSkuStackInteractor({
                           {flavor.tagline && isDesktop ? (
                             <p
                               className={cn(
-                                "mt-1 line-clamp-2 max-w-md font-soul text-base transition-opacity duration-500 min-[800px]:text-lg",
+                                "mt-0.5 line-clamp-1 max-w-md font-soul text-xs transition-opacity duration-500 sm:text-sm",
                                 activeFlavorIndex === index
                                   ? "text-charcoal/70 opacity-100"
                                   : "opacity-0",
